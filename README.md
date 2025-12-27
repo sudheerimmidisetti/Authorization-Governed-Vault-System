@@ -1,9 +1,9 @@
-# 🔐 Secure Vault Authorization System  
+# Secure Vault Authorization System  
 **A Deterministic, Replay-Safe, Two-Contract Fund Security Architecture**
 
 ---
 
-## 📌 Overview
+## Overview
 This project implements a **secure dual-contract vault system** that cleanly separates:
 
 - **Asset Custody** → Managed by `SecureVault`
@@ -14,7 +14,7 @@ The full environment runs **locally via Docker**, requiring **no public blockcha
 
 ---
 
-## 🎯 Project Objective
+## Project Objective
 Modern decentralized systems often split responsibilities across multiple contracts to reduce risk, increase clarity, and prevent privilege concentration.  
 This system demonstrates how to:
 
@@ -26,15 +26,15 @@ This system demonstrates how to:
 
 ---
 
-## 🏗 System Architecture
+## System Architecture
 
-### 1️⃣ SecureVault (Custody Contract)
+### 1️. SecureVault (Custody Contract)
 - Holds native currency (ETH)
 - Accepts deposits from anyone
 - Executes withdrawals **only after external authorization validation**
 - Delegates all permission logic
 
-### 2️⃣ AuthorizationManager (Permission Authority)
+### 2️. AuthorizationManager (Permission Authority)
 - Validates **off-chain signed** withdrawal permissions
 - Performs **ECDSA verification**
 - Ensures **authorization can only be used once**
@@ -77,7 +77,7 @@ No authorization can accidentally apply to:
 
 ---
 
-## 🛡 Replay Protection
+## Replay Protection
 - Every authorization hash is stored after use  
 - Reuse immediately reverts  
 - Guarantees **exactly one successful state transition**
@@ -90,7 +90,7 @@ Prevents:
 
 ---
 
-## ✅ Vault Behavior Guarantees
+## Vault Behavior Guarantees
 - Deposits always succeed  
 - Withdrawals succeed **only with valid authorization**  
 - Internal state updates occur **before value transfer**  
@@ -99,7 +99,7 @@ Prevents:
 
 ---
 
-## 🧰 Initialization Safety
+## Initialization Safety
 Both contracts include **one-time initialization guards** to prevent:
 - Re-initialization  
 - Unauthorized signer replacement  
@@ -107,7 +107,7 @@ Both contracts include **one-time initialization guards** to prevent:
 
 ---
 
-## 👀 Observability
+## Observability
 System emits structured events:
 ```
 
@@ -121,7 +121,7 @@ Failed withdrawals **revert deterministically**.
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 ```
 
 /
@@ -142,7 +142,7 @@ Failed withdrawals **revert deterministically**.
 
 ---
 
-## 🐳 Local Execution (Docker)
+## Local Execution (Docker)
 
 ### Prerequisites
 - Docker  
@@ -167,7 +167,7 @@ No manual steps required.
 
 ---
 
-## 🧪 Validation & Testing
+## Validation & Testing
 Evaluation supports either:
 - Automated tests **OR**
 - A documented manual testing flow
@@ -183,7 +183,7 @@ Recommended tests cover:
 
 ---
 
-## 🔐 Security Reasoning
+## Security Reasoning
 - Vault contains **no cryptographic code**  
 - Authorizations are **explicitly scoped**  
 - One-time authorization enforcement  
@@ -194,7 +194,7 @@ Recommended tests cover:
 
 ---
 
-## ⚙️ Deployment Output
+## Deployment Output
 Logs display:
 - Network identifier  
 - Deployer address  
@@ -205,7 +205,7 @@ Easy for evaluators to locate and verify.
 
 ---
 
-## 📌 System Guarantees
+## System Guarantees
 - Deposits accepted reliably  
 - Withdrawals require valid, verified authorization  
 - Each permission usable exactly once  
@@ -216,7 +216,7 @@ Easy for evaluators to locate and verify.
 
 ---
 
-## 🚧 Assumptions & Limitations
+## Assumptions & Limitations
 - Authorization generation relies on trusted off-chain signer  
 - Only supports native tokens (no ERC20)  
 - No built-in expiration timestamp (extendable)  
@@ -224,7 +224,7 @@ Easy for evaluators to locate and verify.
 
 ---
 
-## ❓ FAQ
+## FAQ
 **Q:** Do I need a public blockchain?  
 **A:** No. Everything runs locally.
 
@@ -245,7 +245,7 @@ Easy for evaluators to locate and verify.
 
 ---
 
-## 📝 Summary
+## Summary
 This system demonstrates:
 - Secure dual-contract architecture
 - Explicit trust separation
